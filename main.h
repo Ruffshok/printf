@@ -77,6 +77,7 @@ char *itob(va_list list);
 char *rot13(va_list list);
 char *rev_string(va_list list);
 char *itoOctal(va_list list);
+int print_S(char *str)
 
 int print_hexa(va_list types, char map_to[],
 char buffer[], int flags, char flag_ch, int width, int precision, int size);
