@@ -2,6 +2,7 @@
 #define MAIN_H
 #include <stdarg.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 #define UNUSED(x) (void)(x)
@@ -58,6 +59,11 @@ int print_percent(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 char *prep_numeric(char *str, specifier spec)
 char *prep_string(char *str, specifier spec)
+char* (*get_func(char i))(va_list);
+char *create_buffer(void);
+void write_buffer(char *buffer, int len, va_list list);
+char *_strcpy(char *dest, char *src);
+int _strlen(char *s);
 
 /* Functions to print numbers */
 int print_int(va_list types, char buffer[],
@@ -128,6 +134,18 @@ int write_pointer(char buffer[], int ind, int length,
 int write_unsgnd(int is_negative, int ind,
 char buffer[],
 	int flags, int width, int precision, int size);
+
+/**
+ * struct types - struct
+ * @id: identifier of type to print (e.g. c means char)
+ * @func: ptr to functions that print according to identifier (e.g. print_c)
+ */
+
+typedef struct types
+{
+	char id;
+	char* (*func)(va_list);
+} print;
 
 
 /****************** UTILS ******************/
