@@ -59,13 +59,28 @@ int print_percent(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /**
-*prints the number of char in a str
+*char *prep_numeric prints the number of char in a str
 *returns 0
 */
 char *prep_numeric(char *str, specifier spec)
-char *prep_string(char *str, specifier spec)/*prints the number of string */
+
+/**
+*char *prep_string prints the number of str in an array
+*returns 0
+*/
+char *prep_string(char *str, specifier spec)
+
+/**
+*char *get_func prints the char in a list
+*returns 0
+*/
 char* (*get_func(char i))(va_list);
-char *create_buffer(void);/*creates the buffer*/ 
+
+/**
+*char *create_buffer prints the buffer
+*returns 0
+*/
+char *create_buffer(void);
 void write_buffer(char *buffer, int len, va_list list);
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
