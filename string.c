@@ -1,31 +1,24 @@
 #include "main.h"
-
 /**
- * print_S - prints a string with custom formatting
- *
- * @str: string to be formatted
- * Return: number of chars printed
+ * print_s - takes string and return string
+ * @list: string
+ * Return: string
  */
-int print_S(char *str)
+char *print_s(va_list list)
 {
-	int i = 0, chars_printed = 0;
-	char c;
+	char *s;
+	char *p;
+	int len;
 
-	while (str[i])
-	{
-		c = str[i];
-		if ((c > 0 && c  < 32) || c >= 127)
-		{
-			chars_printed += _putchar('\\');
-			chars_printed += _putchar('x');
-			chars_printed += _putchar('0');
-			chars_printed += print_odh('X', (unsigned int)c);
-		}
-		else
-		{
-			chars_printed += _putchar(c);
-		}
-		i++;
-	}
-	return (chars_printed);
+	s = va_arg(list, char *);
+	if (s == NULL)
+		s = "(null)";
+
+	len = _strlen(s);
+
+	p = malloc(sizeof(char) * len + 1);
+	if (p == NULL)
+		return (NULL);
+
+	return (_strcpy(p, s));
 }
